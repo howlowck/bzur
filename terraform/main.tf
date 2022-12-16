@@ -3,7 +3,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=2.90.0"
+      version = "=3.36.0"
     }
   }
 }
@@ -48,15 +48,17 @@ resource "azurerm_linux_web_app" "tplreact" {
 
   site_config {
     application_stack {
-      node_version = "14-lts"
+      node_version = "16-lts"
     }
   }
 
   app_settings = {
     "NODE_ENV"                      = "prod"
+    "APP_NAME"                      = "bzur"
     "AZ_STORAGE_ACCOUNT_NAME"       = azurerm_storage_account.tplreact.name
     "AZ_STORAGE_TABLE_NAME"         = azurerm_storage_table.tplreact.name
     "AZ_STORAGE_ACCOUNT_ACCESS_KEY" = format("@Microsoft.KeyVault(VaultName=%s;SecretName=%s)", azurerm_key_vault.tplreact.name, azurerm_key_vault_secret.st_access_key_secret.name)
+    "AZ_PUBSUB_CONNECTION_STRING"   = format("@Microsoft.KeyVault(VaultName=%s;SecretName=%s)", azurerm_key_vault.tplreact.name, azurerm_key_vault_secret.pubsub_connection_string_secret.name)
   }
 }
 
@@ -113,6 +115,15 @@ resource "azurerm_key_vault_secret" "st_access_key_secret" {
   key_vault_id = azurerm_key_vault.tplreact.id
   name         = "storage-account-access-key"
   value        = azurerm_storage_account.tplreact.primary_access_key
+  depends_on = [
+    azurerm_key_vault_access_policy.pipeline_client
+  ]
+}
+
+resource "azurerm_key_vault_secret" "pubsub_connection_string_secret" {
+  key_vault_id = azurerm_key_vault.tplreact.id
+  name         = "pubsub-connection-string"
+  value        = var.pubsub_connection_string
   depends_on = [
     azurerm_key_vault_access_policy.pipeline_client
   ]
