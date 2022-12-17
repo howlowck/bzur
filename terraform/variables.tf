@@ -4,6 +4,6 @@ variable "environment" {
 }
 
 variable "pubsub_connection_string" {
-  type = string
+  type      = string
   sensitive = true
 }
