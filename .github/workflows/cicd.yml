@@ -54,8 +54,7 @@ jobs:
           -var="pubsub_connection_string=${{ secrets.PUBSUB_CONNECTION_STRING }}"
 
       - run: >-
-          terraform apply 
-          -var="pubsub_connection_string=${{ secrets.PUBSUB_CONNECTION_STRING }}"
+          terraform apply
           -auto-approve prod.tfplan
   
   build-and-deploy:
