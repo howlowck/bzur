@@ -51,6 +51,7 @@ jobs:
           terraform plan
           -no-color
           -out=prod.tfplan
+          -var="pubsub_connection_string=${{ secrets.PUBSUB_CONNECTION_STRING }}"
 
       - run: >-
           terraform apply 
