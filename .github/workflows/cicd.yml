@@ -55,8 +55,9 @@ jobs:
 
       - run: >-
           terraform apply 
-          -auto-approve prod.tfplan
           -var="pubsub_connection_string=${{ secrets.PUBSUB_CONNECTION_STRING }}"
+          -auto-approve prod.tfplan
+  
   build-and-deploy:
     name: 'Build and Deploy App'
     runs-on: ubuntu-latest
