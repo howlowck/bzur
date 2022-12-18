@@ -19,7 +19,7 @@ provider "azurerm" {
 data "azurerm_client_config" "current" {}
 
 locals {
-  app = "tplreact"
+  app = "bzur"
 }
 
 #Create Resource Group
