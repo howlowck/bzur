@@ -1,4 +1,4 @@
-# GitHub Template for React-based for Azure
+# Bzur
 
 An opininated but flexible React App template with batteries builtin.
 
