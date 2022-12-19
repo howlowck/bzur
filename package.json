@@ -1,6 +1,7 @@
 {
   "name": "template-react-ts-vite",
   "version": "1.0.0",
+  "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
     "build": "npm run clean && npm run build:be && npm run build:fe",
