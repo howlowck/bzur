@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  AZURE_WEBAPP_NAME: tplreact-prod # CHANGE ME
+  AZURE_WEBAPP_NAME: bzur-prod # CHANGE ME
   AZURE_WEBAPP_PACKAGE_PATH: './'
   NODE_VERSION: '16.x'
 
