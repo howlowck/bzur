@@ -1,6 +1,6 @@
 # Bzur
 
-An opininated but flexible React App template with batteries builtin.
+An simple buzzer app
 
 ## Project Features
 * **[Typescript](https://www.typescriptlang.org/) Support**
