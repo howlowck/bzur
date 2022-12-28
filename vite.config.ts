@@ -7,7 +7,7 @@ export default defineConfig({
   root: 'src',
   server: {
     proxy: {
-      '/api': 'http://localhost:8585/api',
+      '/api': 'http://localhost:8585',
     },
   },
   build: {
