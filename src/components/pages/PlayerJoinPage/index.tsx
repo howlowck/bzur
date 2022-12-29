@@ -8,12 +8,9 @@ type Prop = {
 }
 
 const PlayerJoinPage: React.FC<Prop> = ({ gameName }) => {
-  const { isLoading, isError, data, error } = useQuery(
-    ['teams', gameName],
-    () => {
-      return fetch(`/api/groups/${gameName}`).then(res => res.json())
-    }
-  )
+  const { isLoading, data } = useQuery(['groups', gameName], () => {
+    return fetch(`/api/groups/${gameName}`).then(res => res.json())
+  })
 
   if (isLoading) {
     return <div>loading...</div>
